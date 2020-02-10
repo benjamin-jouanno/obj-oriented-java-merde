@@ -1,6 +1,8 @@
 
 package model;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Properties;
 import java.sql.SQLException;
 import java.util.Enumeration;
@@ -9,6 +11,7 @@ import java.util.Vector;
 import javax.swing.JFrame;
 
 // project imports
+import database.JDBCBroker;
 import database.*;
 
 import impresario.IView;
@@ -20,11 +23,14 @@ public class Book extends EntityBase {
     public String author;
     public String pubYear;
     public String status;
+    private JDBCBroker connector;
+    private Statement theStatement = null;
+    private Connection theDBConnection = null;
 
-    protected Book(Properties _data) {
+    public Book(Properties _data) {
         super("book");
         if (_data.getProperty("bookId").length() > 0) {
-            this.bookId = Integer.parseInt((_data.getProperty("bookId")));
+            this.bookId = 0;
             this.bookTitle = _data.getProperty("bookTitle");
             this.author = _data.getProperty("author");
             this.pubYear = _data.getProperty("pubYear");
@@ -37,8 +43,31 @@ public class Book extends EntityBase {
         super("book");
         String SQLQuery = "SELECT * FROM Book WHERE bookId = " + _primaryKey;
         Vector <Properties> dataRetrieve = getSelectQueryResult(SQLQuery);
-        System.out.println("result = " + dataRetrieve);
+        System.out.println(dataRetrieve);
+        this.bookId = Integer.parseInt((dataRetrieve.elementAt(0).getProperty("bookId")));
+        this.bookTitle = dataRetrieve.elementAt(0).getProperty("bookTitle");
+        this.author = dataRetrieve.elementAt(0).getProperty("author");
+        this.pubYear = dataRetrieve.elementAt(0).getProperty("pubYear");
+        this.status = dataRetrieve.elementAt(0).getProperty("status");
     }
+
+    public void Update() throws SQLException {
+        connector = new JDBCBroker();
+        theDBConnection = connector.getConnection();
+        theStatement = theDBConnection.createStatement();
+        if (this.bookId == 0) {
+            String SQLQuery = "INSERT INTO Book(bookTitle, author, pubYear, status) VALUES('" + this.bookTitle + "', '"
+                    + this.author + "', '" + this.pubYear + "', '" + this.status + "')";
+            theStatement.executeUpdate(SQLQuery);
+        }
+        else {
+            String SQLQuery = "UPDATE Book SET bookTitle = '" + this.bookTitle + "', author = '" + this.author + "', pubYear = '"
+                    + this.pubYear + "', status = '" + this.status + "' WHERE bookId = " + this.bookId;
+            theStatement.executeUpdate(SQLQuery);
+        return ;
+        }
+    }
+
     // getters methods
 
     int getBookId() {

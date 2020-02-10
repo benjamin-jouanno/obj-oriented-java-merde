@@ -1,5 +1,11 @@
 package model;
 
+import database.JDBCBroker;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.Properties;
+
 public class Patron extends EntityBase {
 
     private int patronId; // primary key
@@ -11,7 +17,17 @@ public class Patron extends EntityBase {
     public String email;
     public String dateOfBirth;
     public String status;
+    private JDBCBroker connector;
+    private Statement theStatement = null;
+    private Connection theDBConnection = null;
 
+
+    protected Patron(Properties _data) {
+        super("patron");
+        if (Integer.parseInt(_data.getProperty("bookId") )> 0) {
+            this.patronId = 0;
+        }
+    }
 
     @Override
     public Object getState(String key) {
@@ -28,9 +44,7 @@ public class Patron extends EntityBase {
 
     }
 
-    protected Patron(String tablename) {
-        super(tablename);
-    }
+
 
     // getters
 

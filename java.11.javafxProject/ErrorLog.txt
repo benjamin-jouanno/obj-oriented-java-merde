@@ -1,5 +1,0 @@
-[2/4/20, 1:34 PM]|JDBCBroker|JDBCBroker|Error|NOTAG|null<Could not load driver class[com.mysql.jdbc.Driver]>
-[2/6/20, 1:05 PM]|Book|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr20_csc429_bjoua1.book' doesn't exist>
-[2/6/20, 1:06 PM]|Book|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr20_csc429_bjoua1.book' doesn't exist>
-[2/6/20, 1:06 PM]|Book|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr20_csc429_bjoua1.book' doesn't exist>
-[2/6/20, 1:10 PM]|Book|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1146: Table 'spr20_csc429_bjoua1.book' doesn't exist>

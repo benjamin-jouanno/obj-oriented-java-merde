@@ -80,7 +80,7 @@ public class JDBCBroker
 	
 	// private constructor for singleton
 	//----------------------------------------------------------
-	protected JDBCBroker()
+	public JDBCBroker()
     	{
 
 			try (InputStream input = new FileInputStream("./src/dbConfig.ini")) {
