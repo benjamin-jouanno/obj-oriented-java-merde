@@ -29,8 +29,15 @@ public class Book extends EntityBase {
 
     public Book(Properties _data) {
         super("book");
-        if (_data.getProperty("bookId").length() > 0) {
+        if (_data.getProperty("bookId") == null) {
             this.bookId = 0;
+            this.bookTitle = _data.getProperty("bookTitle");
+            this.author = _data.getProperty("author");
+            this.pubYear = _data.getProperty("pubYear");
+            this.status = _data.getProperty(("status"));
+        }
+        else {
+            this.bookId = Integer.parseInt(_data.getProperty("bookId"));
             this.bookTitle = _data.getProperty("bookTitle");
             this.author = _data.getProperty("author");
             this.pubYear = _data.getProperty("pubYear");
@@ -43,6 +50,7 @@ public class Book extends EntityBase {
         super("book");
         String SQLQuery = "SELECT * FROM Book WHERE bookId = " + _primaryKey;
         Vector <Properties> dataRetrieve = getSelectQueryResult(SQLQuery);
+        if (dataRetrieve.size() == 0) {return ;}
         System.out.println(dataRetrieve);
         this.bookId = Integer.parseInt((dataRetrieve.elementAt(0).getProperty("bookId")));
         this.bookTitle = dataRetrieve.elementAt(0).getProperty("bookTitle");
@@ -58,13 +66,15 @@ public class Book extends EntityBase {
         if (this.bookId == 0) {
             String SQLQuery = "INSERT INTO Book(bookTitle, author, pubYear, status) VALUES('" + this.bookTitle + "', '"
                     + this.author + "', '" + this.pubYear + "', '" + this.status + "')";
-            theStatement.executeUpdate(SQLQuery);
+            System.out.println(theStatement.executeUpdate(SQLQuery));
+            System.out.println("Book Saved");
         }
         else {
             String SQLQuery = "UPDATE Book SET bookTitle = '" + this.bookTitle + "', author = '" + this.author + "', pubYear = '"
                     + this.pubYear + "', status = '" + this.status + "' WHERE bookId = " + this.bookId;
-            theStatement.executeUpdate(SQLQuery);
-        return ;
+            System.out.println(theStatement.executeUpdate(SQLQuery));
+            System.out.println("Book Saved");
+            return ;
         }
     }
 
