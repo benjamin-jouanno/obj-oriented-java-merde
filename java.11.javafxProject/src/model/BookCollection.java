@@ -1,11 +1,12 @@
 package model;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
 public class BookCollection extends EntityBase {
 
-    Vector <Book>bookList;
+    public Vector <Book>bookList;
 
     public BookCollection() {
         super("BookCollection");

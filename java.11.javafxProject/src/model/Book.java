@@ -15,12 +15,13 @@ import database.JDBCBroker;
 import database.*;
 
 import impresario.IView;
+import javafx.beans.property.StringProperty;
 
 public class Book extends EntityBase {
 
     public int bookId; // primary key !
-    public String bookTitle;
-    public String author;
+    public String BookTitle = null;
+    public String Author = null;
     public String pubYear;
     public String status;
     private JDBCBroker connector;
@@ -31,15 +32,15 @@ public class Book extends EntityBase {
         super("book");
         if (_data.getProperty("bookId") == null) {
             this.bookId = 0;
-            this.bookTitle = _data.getProperty("bookTitle");
-            this.author = _data.getProperty("author");
+            this.BookTitle = _data.getProperty("bookTitle");
+            this.Author = _data.getProperty("author");
             this.pubYear = _data.getProperty("pubYear");
             this.status = _data.getProperty(("status"));
         }
         else {
             this.bookId = Integer.parseInt(_data.getProperty("bookId"));
-            this.bookTitle = _data.getProperty("bookTitle");
-            this.author = _data.getProperty("author");
+            this.BookTitle = _data.getProperty("bookTitle");
+            this.Author = _data.getProperty("author");
             this.pubYear = _data.getProperty("pubYear");
             this.status = _data.getProperty(("status"));
         }
@@ -53,8 +54,8 @@ public class Book extends EntityBase {
         if (dataRetrieve.size() == 0) {return ;}
         System.out.println(dataRetrieve);
         this.bookId = Integer.parseInt((dataRetrieve.elementAt(0).getProperty("bookId")));
-        this.bookTitle = dataRetrieve.elementAt(0).getProperty("bookTitle");
-        this.author = dataRetrieve.elementAt(0).getProperty("author");
+        this.BookTitle = dataRetrieve.elementAt(0).getProperty("bookTitle");
+        this.Author = dataRetrieve.elementAt(0).getProperty("author");
         this.pubYear = dataRetrieve.elementAt(0).getProperty("pubYear");
         this.status = dataRetrieve.elementAt(0).getProperty("status");
     }
@@ -64,13 +65,13 @@ public class Book extends EntityBase {
         theDBConnection = connector.getConnection();
         theStatement = theDBConnection.createStatement();
         if (this.bookId == 0) {
-            String SQLQuery = "INSERT INTO Book(bookTitle, author, pubYear, status) VALUES('" + this.bookTitle + "', '"
-                    + this.author + "', '" + this.pubYear + "', '" + this.status + "')";
+            String SQLQuery = "INSERT INTO Book(bookTitle, author, pubYear, status) VALUES('" + this.BookTitle + "', '"
+                    + this.Author + "', '" + this.pubYear + "', '" + this.status + "')";
             System.out.println(theStatement.executeUpdate(SQLQuery));
             System.out.println("Book Saved");
         }
         else {
-            String SQLQuery = "UPDATE Book SET bookTitle = '" + this.bookTitle + "', author = '" + this.author + "', pubYear = '"
+            String SQLQuery = "UPDATE Book SET bookTitle = '" + this.BookTitle + "', author = '" + this.Author + "', pubYear = '"
                     + this.pubYear + "', status = '" + this.status + "' WHERE bookId = " + this.bookId;
             System.out.println(theStatement.executeUpdate(SQLQuery));
             System.out.println("Book Saved");
@@ -85,11 +86,11 @@ public class Book extends EntityBase {
     }
 
     String getBookTitle() {
-        return (this.bookTitle);
+        return (this.BookTitle);
     }
 
     String getAuthor() {
-        return (this.author);
+        return (this.Author);
     }
 
     String getPubYear() {
@@ -107,11 +108,11 @@ public class Book extends EntityBase {
     }
 
     void setBookTitle(String _bookTitle) {
-        this.bookTitle = _bookTitle;
+        this.BookTitle = _bookTitle;
     }
 
     void setAuthor(String _author) {
-        this.author = _author;
+        this.Author = _author;
     }
 
     void setPubYear(String _pubYear) {

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-            <children>
-                <DialogPane contentText="Arthur Costil , Benjamin Jouanno" headerText="peerProg assignemlent" layoutX="162.0" layoutY="172.0" />
-            </children>
-        </AnchorPane>
-    </children>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextField fx:id="bookName" layoutX="87.0" layoutY="18.0" onAction="#handle" />
+            <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book name" />
+            <Pane layoutX="320.0" prefHeight="400.0" prefWidth="320.0" style="-fx-background-color: #4b6584#4b6584;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" prefHeight="374.0" prefWidth="296.0" />
+               </children></Pane>
+            <TextField layoutX="87.0" layoutY="59.0" />
+            <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
+            <TextField layoutX="87.0" layoutY="102.0" />
+            <Text layoutX="14.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pub year" wrappingWidth="52.74072265625" />
+         </children>
+    </AnchorPane>
+  </children>
 </VBox>
