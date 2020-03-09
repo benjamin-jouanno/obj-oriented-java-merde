@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,12 +16,21 @@
             <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book name" />
             <Pane layoutX="320.0" prefHeight="400.0" prefWidth="320.0" style="-fx-background-color: #4b6584#4b6584;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" prefHeight="374.0" prefWidth="296.0" />
+                  <ListView fx:id="listView" layoutX="14.0" layoutY="6.0" prefHeight="313.0" prefWidth="441.0" />
+                  <ListView fx:id="listView2" layoutX="14.0" layoutY="335.0" prefHeight="246.0" prefWidth="441.0" />
                </children></Pane>
-            <TextField layoutX="87.0" layoutY="59.0" />
+            <TextField fx:id="bookAuthor" layoutX="87.0" layoutY="59.0" onAction="#handleAuthor" />
             <Text layoutX="14.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
-            <TextField layoutX="87.0" layoutY="102.0" />
+            <TextField fx:id="bookPub" layoutX="87.0" layoutY="102.0" onAction="#handlePub" />
             <Text layoutX="14.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pub year" wrappingWidth="52.74072265625" />
+            <TextField fx:id="patronName" layoutX="93.0" layoutY="200.0" onAction="#handlePatronName" />
+            <Text layoutX="20.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patron name" />
+            <TextField fx:id="patronZip" layoutX="93.0" layoutY="241.0" onAction="#handlePatronZip" />
+            <Text layoutX="20.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patron ZIP" />
+            <TextField fx:id="patronAge" layoutX="93.0" layoutY="284.0" onAction="#handlePatronAge" />
+            <Text layoutX="20.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patron age" wrappingWidth="61.10888671875" />
+            <Button fx:id="newBook" layoutX="27.0" layoutY="359.0" mnemonicParsing="false" onAction="#newBook" text="New Book" />
+            <Button fx:id="newPatron" layoutX="113.0" layoutY="359.0" mnemonicParsing="false" onAction="#newPatron" text="New Patron" />
          </children>
     </AnchorPane>
   </children>

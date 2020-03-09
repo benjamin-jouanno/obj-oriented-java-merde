@@ -11,7 +11,7 @@ import java.util.Vector;
 public class Patron extends EntityBase {
 
     private int patronId; // primary key
-    public String name;
+    public String name = null;
     public String address;
     public String city;
     public String stateCode;
@@ -92,19 +92,7 @@ public class Patron extends EntityBase {
         }
     }
 
-    @Override
-    public Object getState(String key)
-    {
-        return null;
-    }
 
-    @Override
-    public void stateChangeRequest(String key, Object value)
-    {}
-
-    @Override
-    protected void initializeSchema(String tableName)
-    {}
 
 
 
@@ -142,7 +130,49 @@ public class Patron extends EntityBase {
         return (this.dateOfBirth);
     }
 
-    String getStatus() {
-        return  (this.status);
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public Object getState(String key)
+    {
+        return null;
+    }
+
+    @Override
+    public void stateChangeRequest(String key, Object value)
+    {}
+
+    @Override
+    protected void initializeSchema(String tableName)
+    {}
 }

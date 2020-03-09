@@ -1,0 +1,1 @@
+[3/5/20, 12:59 PM]|BookCollection|getSelectQueryResult|Error|NOTAG|null<SQL Exception: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'est parcequ'il fait pas d'effort%'' at line 1>

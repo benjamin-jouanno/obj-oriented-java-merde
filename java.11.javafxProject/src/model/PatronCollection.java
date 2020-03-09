@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class PatronCollection extends EntityBase {
 
-    Vector <Patron>patronList;
+    public Vector <Patron>patronList;
 
     public PatronCollection()
     {
@@ -24,6 +24,7 @@ public class PatronCollection extends EntityBase {
         {
             System.out.println( i + ": " + dataRetrieve.get(i) + "\n");
             Patron temp = new Patron(dataRetrieve.get(i));
+            this.patronList.add(temp);
         }
     }
 
@@ -37,6 +38,7 @@ public class PatronCollection extends EntityBase {
         {
             System.out.println( i + ": " + dataRetrieve.get(i) + "\n");
             Patron temp = new Patron(dataRetrieve.get(i));
+            this.patronList.add(temp);
         }
     }
 
@@ -53,13 +55,14 @@ public class PatronCollection extends EntityBase {
         {
             System.out.println( i + ": " + dataRetrieve.get(i) + "\n");
             Patron temp = new Patron(dataRetrieve.get(i));
+            this.patronList.add(temp);
         }
     }
 
     public void findPatronsWithNameLike(String name)
     {
         this.patronList.clear();
-        String SQLQuery = "SELECT * FROM Patron WHERE zip LIKE '%" + name + "%'";
+        String SQLQuery = "SELECT * FROM Patron WHERE name LIKE '%" + name + "%'";
         Vector<Properties> dataRetrieve = getSelectQueryResult(SQLQuery);
         if (dataRetrieve.size() == 0)
         {
@@ -67,8 +70,9 @@ public class PatronCollection extends EntityBase {
         }
         for (int i = 0; i < dataRetrieve.size(); i++)
         {
-            System.out.println( i + ": " + dataRetrieve.get(i) + "\n");
             Patron temp = new Patron(dataRetrieve.get(i));
+            this.patronList.add(temp);
+            System.out.println( i + ": " + dataRetrieve.get(i) + "\n");
         }
     }
 
